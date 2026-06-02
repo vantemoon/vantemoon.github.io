@@ -19,12 +19,12 @@ const links = [
   },
   {
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/vantemoon",
     description: "Code repositories and development projects.",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/sun-ruoxin-sylvia/",
     description: "Professional profile and experience.",
   },
 ];
