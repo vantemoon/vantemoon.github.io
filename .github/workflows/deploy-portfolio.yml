@@ -1,4 +1,4 @@
-name: Deploy portfolio to GitHub Pages
+name: pages build and deployment
 
 on:
   push:
