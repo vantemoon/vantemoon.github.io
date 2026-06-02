@@ -78,7 +78,7 @@ nav {
 
 nav a {
   padding: 7px 12px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 999px;
   background: transparent;
   transition:
@@ -191,7 +191,7 @@ p {
   justify-content: center;
   min-height: 40px;
   padding: 10px 18px;
-  border: 1px solid var(--soft-white);
+  border: 2px solid var(--soft-white);
   border-radius: 999px;
   font-size: 0.95rem;
   font-weight: 800;
@@ -275,8 +275,8 @@ p {
 .link-card,
 .project-card,
 .document-card {
-  border: 1px solid var(--faint);
-  border-radius: 0;
+  border: 2px solid var(--faint);
+  border-radius: 24px;
   background: rgba(249, 246, 241, 0.035);
 }
 

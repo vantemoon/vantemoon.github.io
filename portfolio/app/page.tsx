@@ -43,7 +43,6 @@ export default function Home() {
               my name is
             </span>
             <span className="hero-title-name">SYLVIA SUN</span>
-            <span className="hero-title-pronouns">(she/her)</span>
           </h1>
           <p>
             I am a game development student who enjoys building interactive systems, 
