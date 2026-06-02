@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "./components/SiteHeader";
 
@@ -59,10 +60,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-image" aria-label="Portrait placeholder">
-          <div className="portrait-card">
-            <span>Portrait Placeholder</span>
-          </div>
+        <div className="hero-image" aria-label="Portrait of Sylvia">
+          <Image
+            className="hero-photo"
+            src="/hero.jpg"
+            alt="Portrait of Sylvia"
+            width={720}
+            height={720}
+            priority
+          />
         </div>
       </section>
 

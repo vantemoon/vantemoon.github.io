@@ -229,6 +229,15 @@ p {
   text-align: center;
 }
 
+.hero-photo {
+  width: min(100%, 360px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
 .portrait-card span,
 .media-placeholder span,
 .video-placeholder span {
@@ -507,7 +516,8 @@ p {
     min-height: 260px;
   }
 
-  .portrait-card {
+  .portrait-card,
+  .hero-photo {
     width: min(88%, 270px);
   }
 
