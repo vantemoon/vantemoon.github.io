@@ -6,12 +6,12 @@ const links = [
   {
     label: "Personal Projects",
     href: "/personal-project",
-    description: "Personal projects, experiments, and development work.",
+    description: "Personal projects and development work.",
   },
   {
     label: "Team Projects",
     href: "/team-project",
-    description: "Collaborative projects built with shared design and technical goals.",
+    description: "Collaborative projects built with shared design.",
   },
   {
     label: "About Me",

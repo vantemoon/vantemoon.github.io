@@ -364,10 +364,20 @@ p {
 }
 
 .static-media {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
   border-radius: 58px;
   background:
     linear-gradient(rgba(16, 17, 20, 0.08), rgba(16, 17, 20, 0.08)),
     linear-gradient(155deg, rgba(144, 165, 133, 0.96), rgba(249, 246, 241, 0.82) 55%, rgba(218, 165, 164, 0.76));
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .stacked-media .media-placeholder {
@@ -377,13 +387,14 @@ p {
 .animated-media {
   position: relative;
   overflow: hidden;
+  min-height: 300px;
   border-radius: 58px;
-  background: var(--charcoal);
+  background: linear-gradient(135deg, rgba(46, 46, 46, 0.96), rgba(16, 17, 20, 0.98));
 }
 
 .animated-media::before {
   position: absolute;
-  inset: -38%;
+  inset: -85%;
   background: conic-gradient(
     from 0deg,
     rgba(152, 22, 16, 0.95),
@@ -393,13 +404,17 @@ p {
     rgba(152, 22, 16, 0.95)
   );
   content: "";
+  transform-origin: center;
   animation: rotatePlaceholder 10s linear infinite;
+  opacity: 0.82;
 }
 
 .animated-media span {
   position: relative;
+  z-index: 1;
   padding: 14px 18px;
-  background: rgba(16, 17, 20, 0.72);
+  border-radius: 18px;
+  background: rgba(16, 17, 20, 0.78);
 }
 
 .video-placeholder {
