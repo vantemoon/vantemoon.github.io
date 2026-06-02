@@ -34,6 +34,7 @@ export default function PersonalProjectPage() {
           </div>
           <div>
             <h2>DFS I</h2>
+            <p className="project-label">DFS I · Card-Based Village Simulation</p>
             <p>
               For my DFS I project, I am recreating the core gameplay loop of Stacklands 
               as a card-based village simulation. The project focuses on draggable cards, 

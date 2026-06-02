@@ -8,8 +8,8 @@ const navLinks = [
   { label: "Personal Projects", href: "/personal-project" },
   { label: "Team Projects", href: "/team-project" },
   { label: "About Me", href: "/about" },
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
+  { label: "GitHub", href: "https://github.com/vantemoon" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sun-ruoxin-sylvia/" },
 ];
 
 export default function SiteHeader() {

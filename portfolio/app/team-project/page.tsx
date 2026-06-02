@@ -2,16 +2,19 @@ import SiteHeader from "../components/SiteHeader";
 
 const projects = [
   {
-    title: "TGP I",
-    video: "Embedded Video Placeholder",
+    title: "Out of the Dark",
+    label: "TGP I - Team Horror Game",
+    embedUrl: "https://www.youtube.com/embed/yxlQpKpnryw",
     description:
-      "A collaborative project entry for TGP I. Replace this copy with team goals, your contribution, tools used, and the final outcome.",
+      "For TGP I, I worked as the main programmer on Out of the Dark, a top-down horror game focused on light, darkness, and psychological tension. I implemented the menu system, enemy AI, sanity system, and audio system, while also helping maintain build stability and support teammates with technical issues. This project taught me the importance of clear communication, early system planning, and balancing urgent bug fixes with long-term feature work.",
   },
   {
-    title: "TGP II",
-    video: "Embedded Video Placeholder",
+    title: "Hamsterballin'",
+    titleLines: ["Hamster", "ballin'"],
+    label: "TGP II - Kart Racer",
+    video: "Hamsterballin' Trailer Placeholder",
     description:
-      "A second collaborative project entry for TGP II. This space can hold a YouTube trailer embed and a concise explanation of the work.",
+      "For TGP II, the team built a kart racing game with a playful hamster-ball theme. As lead programmer, my main responsibility was keeping the technical side of the project organized and aligned with the wider team. I created tasks, prepared builds, coordinated with other discipline leads and stakeholders, supported team communication, and helped present the project during reviews and milestones.",
   },
 ];
 
@@ -23,8 +26,10 @@ export default function TeamworkPage() {
       <section className="page-intro">
         <h1>Team Projects</h1>
         <p>
-          Two team project entries with embedded video placeholders and complete
-          descriptive sections.
+          A collection of collaborative game projects where I worked closely
+          with teammates across programming, design, art, audio, and production.
+          These projects show how I contribute to shared goals, communicate
+          across disciplines, and take ownership of technical systems within a team.
         </p>
       </section>
 
@@ -32,10 +37,28 @@ export default function TeamworkPage() {
         {projects.map((project) => (
           <article className="project-card" key={project.title}>
             <div className="video-placeholder">
-              <span>{project.video}</span>
+              {project.embedUrl ? (
+                <iframe
+                  src={project.embedUrl}
+                  title={`${project.title} trailer`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <span>{project.video}</span>
+              )}
             </div>
             <div>
-              <h2>{project.title}</h2>
+              <h2>
+                {project.titleLines
+                  ? project.titleLines.map((line) => (
+                      <span className="title-line" key={line}>
+                        {line}
+                      </span>
+                    ))
+                  : project.title}
+              </h2>
+              <p className="project-label">{project.label}</p>
               <p>{project.description}</p>
             </div>
           </article>
