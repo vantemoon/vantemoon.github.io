@@ -455,11 +455,23 @@ p {
 }
 
 .document-card {
+  display: grid;
+  grid-template-rows: minmax(112px, auto) minmax(42px, auto) auto;
+  align-content: start;
   padding: 30px;
 }
 
+.document-card h2 {
+  align-self: start;
+}
+
+.document-card p {
+  margin: 0;
+}
+
 .document-card .button {
-  margin-top: 18px;
+  justify-self: start;
+  margin-top: 14px;
 }
 
 @keyframes rotatePlaceholder {
