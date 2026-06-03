@@ -21,7 +21,12 @@ export default function AboutPage() {
           <p>
             View or download my resume as a PDF.
           </p>
-          <a className="button primary" href="/resume.pdf">
+          <a
+            className="button primary"
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Open Resume PDF
           </a>
         </article>
@@ -31,7 +36,12 @@ export default function AboutPage() {
           <p>
             View or download my cover letter as a PDF.
           </p>
-          <a className="button secondary" href="/resume.pdf">
+          <a
+            className="button secondary"
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Open Cover Letter PDF
           </a>
         </article>
