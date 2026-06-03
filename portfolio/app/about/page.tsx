@@ -1,3 +1,4 @@
+import MovieSlideshow from "../components/MovieSlideshow";
 import SiteHeader from "../components/SiteHeader";
 
 export default function AboutPage() {
@@ -46,6 +47,8 @@ export default function AboutPage() {
           </a>
         </article>
       </section>
+
+      <MovieSlideshow />
     </main>
   );
 }
