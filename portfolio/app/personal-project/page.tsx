@@ -1,26 +1,37 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import SiteHeader from "../components/SiteHeader";
 
 const projects = [
   {
     title: "C++ Game Engine",
     label: "Custom 2D/3D Engine Architecture",
+    tags: ["C++", "D3D11", "Rendering", "Tools", "Gameplay"],
+    intro:
+      "A custom 2D/3D C++ engine with gameplay, physics, UI, animation, rendering, tooling, and debug systems.",
     staticAlt: "Custom C++ game engine project preview",
     animatedLabel: "Custom C++ Game Engine Demo Placeholder",
     description:
-      "I developed a custom 2D/3D game engine in C++ with gameplay, physics, UI, animation, and rendering systems. The engine includes D3D11 rendering for geometry, shaders, lighting, and camera controls, plus data-driven definitions, gameplay logic, console commands, and debug visualization tools. I also built multiple demos with the engine, including DFS I, to validate its gameplay, rendering, and tooling systems.",
+      "I developed a custom 2D/3D game engine in C++ with gameplay, physics, UI, animation, and rendering systems. The engine includes D3D11 rendering for geometry, shaders, lighting, and camera controls, plus data-driven definitions, gameplay logic, console commands, and debug visualization tools. I also built multiple demos with the engine to validate its gameplay, rendering, and tooling systems.",
   },
   {
-    title: "DFS I",
-    label: "DFS I - Card-Based Village Simulation",
-    staticAlt: "DFS I static project preview",
-    animatedLabel: "DFS I Animated Image Placeholder",
+    title: "Stacklands",
+    label: "Playable Card-Based Village Prototype",
+    tags: ["C++", "Gameplay", "UI", "Systems", "Prototype"],
+    intro:
+      "A playable card-based village prototype built in my custom engine, with packs, stacking, crafting, survival, and combat.",
+    staticAlt: "Stacklands static project preview",
+    animatedLabel: "Stacklands Animated Image Placeholder",
     description:
-      "For my DFS I project, I am recreating the core gameplay loop of Stacklands as a card-based village simulation. The project focuses on draggable cards, stack-based interactions, timed actions, resource gathering, crafting, food management, card packs, and simple automatic combat. My main goal is to build a flexible card system and user interface that can support expandable gameplay content.",
+      "I built a playable card-based village prototype inspired by Stacklands in my custom engine. The project currently includes 24 card definitions across Villagers, Structures, Resources, Food, and Mobs; 11 harvesting, growing, crafting, and population recipes; four card packs; a 60-second day cycle; food consumption and starvation; basic economy, population growth, animal behavior, and combat. I implemented card rendering, selection, dragging, stacking, stack separation, click-to-open packs with fixed and weighted draws, selling cards for coins, pack-buying regions, timed recipe progress bars, reusable and consumed ingredients, chance-based results, repeated harvesting with limited yields, and a food/gold/day-progress HUD. The simulation also supports babies maturing into Villagers, Rabbits and Chickens wandering and producing resources, automatic Villager-versus-Mob combat with attack speed, hit chance, damage, defense, health, target selection, corpse and raw-meat drops, cursor-centered zoom, WASD panning, an in-game guide with recipe reference and day-length slider, pause, slow motion, single-frame stepping, reset, and developer-console support.",
   },
 ];
 
 export default function PersonalProjectPage() {
+  const [expandedProject, setExpandedProject] = useState<string | null>(null);
+
   return (
     <main>
       <SiteHeader />
@@ -36,8 +47,26 @@ export default function PersonalProjectPage() {
       </section>
 
       <section className="project-layout">
-        {projects.map((project) => (
-          <article className="project-card featured" key={project.title}>
+        {projects.map((project) => {
+          const isExpanded = expandedProject === project.title;
+
+          return (
+          <article
+            aria-expanded={isExpanded}
+            className={`project-card featured ${isExpanded ? "expanded" : ""}`}
+            key={project.title}
+            onClick={() =>
+              setExpandedProject(isExpanded ? null : project.title)
+            }
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setExpandedProject(isExpanded ? null : project.title);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
             <div className="stacked-media">
               <div className="static-media">
                 <Image
@@ -55,10 +84,23 @@ export default function PersonalProjectPage() {
             <div>
               <h2>{project.title}</h2>
               <p className="project-label">{project.label}</p>
-              <p>{project.description}</p>
+              <div className="project-tags" aria-label={`${project.title} tags`}>
+                {project.tags.map((tag) => (
+                  <span className="project-tag" key={tag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="project-description">
+                {isExpanded ? project.description : project.intro}
+              </p>
+              <span className="project-expand-prompt">
+                {isExpanded ? "Click to collapse" : "Click card to expand"}
+              </span>
             </div>
           </article>
-        ))}
+          );
+        })}
       </section>
     </main>
   );
