@@ -2,15 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import SocialIcon from "./SocialIcon";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Personal Projects", href: "/personal-project" },
   { label: "Team Projects", href: "/team-project" },
   { label: "About Me", href: "/about" },
-  { label: "GitHub", href: "https://github.com/vantemoon" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sun-ruoxin-sylvia/" },
-];
+  { label: "GitHub", href: "https://github.com/vantemoon", icon: "github" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/sun-ruoxin-sylvia/",
+    icon: "linkedin",
+  },
+] as const;
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -38,8 +43,19 @@ export default function SiteHeader() {
               {link.label}
             </Link>
           ) : (
-            <a href={link.href} key={link.label}>
-              {link.label}
+            <a
+              aria-label={link.label}
+              className="social-nav-link"
+              href={link.href}
+              key={link.label}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {"icon" in link ? (
+                <SocialIcon className="social-icon" name={link.icon} />
+              ) : (
+                link.label
+              )}
             </a>
           );
         })}

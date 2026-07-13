@@ -12,7 +12,7 @@ const projects = [
     title: "Hamsterballin'",
     titleLines: ["Hamster", "ballin'"],
     label: "TGP II - Kart Racer",
-    video: "Hamsterballin' Trailer Placeholder",
+    video: "Placeholder video for Hamster ballin'",
     description:
       "For TGP II, the team built a kart racing game with a playful hamster-ball theme. As lead programmer, my main responsibility was keeping the technical side of the project organized and aligned with the wider team. I created tasks, prepared builds, coordinated with other discipline leads and stakeholders, supported team communication, and helped present the project during reviews and milestones.",
   },

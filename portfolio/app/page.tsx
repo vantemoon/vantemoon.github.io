@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "./components/SiteHeader";
+import SocialIcon from "./components/SocialIcon";
 
 const links = [
   {
@@ -22,13 +23,15 @@ const links = [
     label: "GitHub",
     href: "https://github.com/vantemoon",
     description: "Code repositories and development projects.",
+    icon: "github",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/sun-ruoxin-sylvia/",
     description: "Professional profile and experience.",
+    icon: "linkedin",
   },
-];
+] as const;
 
 export default function Home() {
   return (
@@ -79,7 +82,7 @@ export default function Home() {
         <p className="bio-text">
           This portfolio reflects my journey as a game development student, 
           from individual experiments to collaborative projects. 
-          Through these works, I hope to show how I approach gameplay systems, 
+          This site shows my approach to gameplay systems, 
           technical implementation, visual presentation, and team projects.
         </p>
       </section>
@@ -92,8 +95,19 @@ export default function Home() {
               <small>{link.description}</small>
             </Link>
           ) : (
-            <a className="link-card" key={link.label} href={link.href}>
-              <span>{link.label}</span>
+            <a
+              className="link-card"
+              href={link.href}
+              key={link.label}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span className="link-card-heading">
+                {"icon" in link && (
+                  <SocialIcon className="link-card-icon" name={link.icon} />
+                )}
+                {link.label}
+              </span>
               <small>{link.description}</small>
             </a>
           )
