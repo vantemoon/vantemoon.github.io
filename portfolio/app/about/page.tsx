@@ -17,7 +17,7 @@ export default function AboutPage() {
       </section>
 
       <section className="document-grid">
-        <article className="document-card">
+        <article className="document-card scroll-reveal">
           <h2>Resume</h2>
           <p>
             View or download my resume as a PDF.
@@ -32,7 +32,7 @@ export default function AboutPage() {
           </a>
         </article>
 
-        <article className="document-card">
+        <article className="document-card scroll-reveal">
           <h2>Cover Letter</h2>
           <p>
             View or download my cover letter as a PDF.

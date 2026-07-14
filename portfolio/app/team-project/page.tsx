@@ -78,7 +78,7 @@ export default function TeamworkPage() {
           return (
           <article
             aria-expanded={isExpanded}
-            className={`project-card ${isExpanded ? "expanded" : ""}`}
+            className={`project-card scroll-reveal ${isExpanded ? "expanded" : ""}`}
             key={project.title}
             onClick={(event) => toggleProject(project.title, event.currentTarget)}
             onKeyDown={(event) => {
@@ -123,7 +123,10 @@ export default function TeamworkPage() {
                   </span>
                 ))}
               </div>
-              <p className="project-description">
+              <p
+                className="project-description"
+                key={isExpanded ? "expanded" : "collapsed"}
+              >
                 {isExpanded ? project.description : project.intro}
               </p>
               <span className="project-expand-prompt">

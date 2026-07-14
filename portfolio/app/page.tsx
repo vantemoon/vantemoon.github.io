@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="content-band">
+      <section className="content-band scroll-reveal">
         <div className="section-heading">
           <h2>Projects and progress</h2>
         </div>
@@ -90,13 +90,13 @@ export default function Home() {
       <section className="link-grid" aria-label="Portfolio links">
         {links.map((link) =>
           link.href.startsWith("/") ? (
-            <Link className="link-card" key={link.label} href={link.href}>
+            <Link className="link-card scroll-reveal" key={link.label} href={link.href}>
               <span>{link.label}</span>
               <small>{link.description}</small>
             </Link>
           ) : (
             <a
-              className="link-card"
+              className="link-card scroll-reveal"
               href={link.href}
               key={link.label}
               rel="noreferrer"

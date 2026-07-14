@@ -70,9 +70,14 @@ const movieDescription =
   "I love immersing myself in different stories, characters, and cinematic worlds. Two of my favorite directors are Christopher Nolan and Wong Kar-Wai. Nolan films are known for complex narratives and mind-bending concepts, and I am always in awe of how he masterfully weaves together different elements to create a cohesive and thought-provoking experience. On the other hand, Wong Kar-Wai films are characterized by their poignant and intimate exploration of human emotions, often told through stunning cinematography and powerful performances.";
 
 export default function MovieSlideshow() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [slideState, setSlideState] = useState<{
+    activeIndex: number;
+    previousIndex: number | null;
+  }>({ activeIndex: 0, previousIndex: null });
   const [hasMounted, setHasMounted] = useState(false);
+  const { activeIndex, previousIndex } = slideState;
   const activeMovie = movies[activeIndex];
+  const previousMovie = previousIndex === null ? null : movies[previousIndex];
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setHasMounted(true));
@@ -86,15 +91,38 @@ export default function MovieSlideshow() {
     }
 
     const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % movies.length);
+      setSlideState((current) => ({
+        activeIndex: (current.activeIndex + 1) % movies.length,
+        previousIndex: current.activeIndex,
+      }));
     }, 4500);
 
     return () => window.clearInterval(timer);
   }, [hasMounted]);
 
+  useEffect(() => {
+    if (previousIndex === null) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setSlideState((current) => ({ ...current, previousIndex: null }));
+    }, 540);
+
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, previousIndex]);
+
+  const showMovie = (index: number) => {
+    setSlideState((current) =>
+      index === current.activeIndex
+        ? current
+        : { activeIndex: index, previousIndex: current.activeIndex }
+    );
+  };
+
   if (!hasMounted) {
     return (
-      <section className="movie-section" aria-label="Screen favorites">
+      <section className="movie-section scroll-reveal" aria-label="Screen favorites">
         <h2>Screen Favorites</h2>
 
         <div className="movie-stage">
@@ -106,16 +134,27 @@ export default function MovieSlideshow() {
   }
 
   return (
-    <section className="movie-section" aria-label="Screen favorites">
+    <section className="movie-section scroll-reveal" aria-label="Screen favorites">
       <h2>Screen Favorites</h2>
 
       <div className="movie-stage">
         <div className="film-frame">
           <div className="movie-still">
+            {previousMovie && (
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="movie-still-image movie-still-previous"
+                fill
+                sizes="(max-width: 860px) calc(100vw - 44px), 760px"
+                src={previousMovie.image}
+              />
+            )}
             <Image
               alt={`${activeMovie.title} movie still`}
-              className="movie-still-image"
+              className="movie-still-image movie-still-current"
               fill
+              key={activeMovie.image}
               priority={activeIndex === 0}
               sizes="(max-width: 860px) calc(100vw - 44px), 760px"
               src={activeMovie.image}
@@ -127,6 +166,9 @@ export default function MovieSlideshow() {
             </h3>
             <p>{activeMovie.director}</p>
           </div>
+          {previousMovie && (
+            <span className="movie-black-transition" aria-hidden="true" />
+          )}
           <Image
             className="film-overlay"
             src="/overlay.png"
@@ -144,7 +186,7 @@ export default function MovieSlideshow() {
               aria-current={activeIndex === index ? "true" : undefined}
               className={activeIndex === index ? "movie-dot active" : "movie-dot"}
               key={movie.title}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => showMovie(index)}
               type="button"
             />
           ))}

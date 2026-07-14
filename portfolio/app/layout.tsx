@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Asset, Grenze } from "next/font/google";
+import ScrollReveal from "./components/ScrollReveal";
 import "./globals.css";
 
 const asset = Asset({
@@ -30,6 +31,7 @@ export default function RootLayout({
       className={`${asset.variable} ${grenze.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <ScrollReveal />
         {children}
       </body>
     </html>

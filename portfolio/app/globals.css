@@ -102,6 +102,7 @@ nav a.active-link {
   box-shadow:
     0 0 0 1px rgba(249, 246, 241, 0.05),
     0 12px 34px rgba(152, 22, 16, 0.2);
+  animation: navigationActiveIn 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .social-nav-link {
@@ -182,6 +183,26 @@ h2 {
   line-height: 1.1;
 }
 
+.hero-title-intro {
+  animation: heroCopyEntrance 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title-name {
+  animation: heroCopyEntrance 560ms cubic-bezier(0.22, 1, 0.36, 1) 110ms both;
+}
+
+.hero-copy > p {
+  animation: heroCopyEntrance 560ms cubic-bezier(0.22, 1, 0.36, 1) 220ms both;
+}
+
+.hero-actions {
+  animation: heroCopyEntrance 560ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+}
+
+.hero-photo {
+  animation: heroPortraitEntrance 720ms cubic-bezier(0.16, 1, 0.3, 1) 140ms both;
+}
+
 p {
   color: var(--muted);
   font-size: 1.28rem;
@@ -211,6 +232,12 @@ p {
   border-radius: 999px;
   font-size: 1.1rem;
   font-weight: 800;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .button.primary {
@@ -221,6 +248,16 @@ p {
 .button.secondary {
   background: transparent;
   color: var(--soft-white);
+}
+
+.button:focus-visible,
+.link-card:focus-visible {
+  outline: 3px solid rgba(218, 165, 164, 0.7);
+  outline-offset: 4px;
+}
+
+.button:active {
+  transform: translateY(1px) scale(0.97);
 }
 
 .hero-image {
@@ -312,11 +349,21 @@ p {
   flex-direction: column;
   justify-content: space-between;
   padding: 21px;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
 }
 
 .link-card:hover {
   border-color: var(--rose);
   background: rgba(218, 165, 164, 0.09);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+}
+
+.link-card:active {
+  transform: scale(0.98);
 }
 
 .link-card span {
@@ -349,6 +396,7 @@ p {
 
 .page-intro {
   padding: 92px 0 52px;
+  animation: pageIntroFade 300ms ease-out both;
 }
 
 .page-intro h1 {
@@ -378,7 +426,8 @@ p {
   transition:
     border-color 180ms ease,
     background-color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-card:hover,
@@ -443,6 +492,7 @@ p {
 
 .project-description {
   margin: 24px 0 0;
+  animation: projectCopyChange 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .project-expand-prompt {
@@ -536,6 +586,7 @@ p {
 .video-placeholder {
   aspect-ratio: 16 / 9;
   min-height: auto;
+  overflow: hidden;
   background:
     linear-gradient(rgba(16, 17, 20, 0.42), rgba(16, 17, 20, 0.42)),
     linear-gradient(135deg, var(--deep-red), var(--sage));
@@ -546,6 +597,12 @@ p {
   height: 100%;
   border: 0;
   display: block;
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-image,
+.project-video {
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .document-grid {
@@ -618,6 +675,27 @@ p {
 
 .movie-still-image {
   object-fit: cover;
+}
+
+.movie-still-current {
+  z-index: 0;
+}
+
+.movie-still-previous {
+  z-index: 1;
+  animation: moviePreviousHold 500ms linear both;
+  will-change: opacity;
+}
+
+.movie-black-transition {
+  position: absolute;
+  inset: 15.5% 2.2% 16.2%;
+  z-index: 3;
+  border-radius: 24px;
+  background: #000;
+  pointer-events: none;
+  animation: movieFadeThroughBlack 500ms linear both;
+  will-change: opacity;
 }
 
 .film-frame:hover .movie-still {
@@ -731,6 +809,194 @@ p {
   }
 }
 
+@keyframes heroCopyEntrance {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes navigationActiveIn {
+  from {
+    opacity: 0.7;
+    box-shadow: 0 2px 8px rgba(152, 22, 16, 0.04);
+  }
+
+  to {
+    opacity: 1;
+    box-shadow:
+      0 0 0 1px rgba(249, 246, 241, 0.05),
+      0 12px 34px rgba(152, 22, 16, 0.2);
+  }
+}
+
+@keyframes pageIntroFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroPortraitEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes projectCopyChange {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes moviePreviousHold {
+  0%,
+  40% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes movieFadeThroughBlack {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  34% {
+    opacity: 1;
+  }
+
+  46% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button.primary:hover {
+    background: var(--ivory);
+    box-shadow: 0 12px 30px rgba(249, 246, 241, 0.14);
+  }
+
+  .button.secondary:hover {
+    border-color: var(--rose);
+    background: rgba(218, 165, 164, 0.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .link-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .button:hover:active {
+    transform: translateY(1px) scale(0.97);
+  }
+
+  .link-card:hover:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .project-card:hover,
+  .project-card:focus-visible {
+    transform: translateY(-5px);
+  }
+
+  .project-card:hover .project-image,
+  .project-card:hover .project-video,
+  .project-card:hover .video-placeholder iframe,
+  .project-card:focus-visible .project-image,
+  .project-card:focus-visible .project-video,
+  .project-card:focus-visible .video-placeholder iframe {
+    transform: scale(1.025);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card:active {
+    transform: scale(0.985);
+  }
+
+  .movie-hover-panel {
+    background: linear-gradient(
+      90deg,
+      rgba(17, 18, 21, 0.82),
+      rgba(17, 18, 21, 0.38) 68%,
+      transparent 100%
+    );
+    opacity: 1;
+  }
+}
+
+.scroll-reveal.reveal-ready {
+  opacity: 0;
+  translate: 0 22px;
+}
+
+.scroll-reveal.reveal-ready.is-visible {
+  animation: scrollReveal 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.link-grid .scroll-reveal:nth-child(2),
+.project-layout .scroll-reveal:nth-child(2),
+.document-grid .scroll-reveal:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.link-grid .scroll-reveal:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.link-grid .scroll-reveal:nth-child(4) {
+  animation-delay: 270ms;
+}
+
+.link-grid .scroll-reveal:nth-child(5) {
+  animation-delay: 360ms;
+}
+
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 @media (max-width: 860px) {
   .site-header {
     align-items: flex-start;
@@ -824,6 +1090,35 @@ p {
     font-size: 1rem;
   }
 
+  .hero-title-intro,
+  .hero-title-name,
+  .hero-copy > p,
+  .hero-actions {
+    animation-duration: 420ms;
+  }
+
+  .hero-photo {
+    animation-duration: 520ms;
+  }
+
+  nav a.active-link {
+    animation-duration: 240ms;
+  }
+
+  .page-intro {
+    animation-duration: 240ms;
+  }
+
+  .scroll-reveal.reveal-ready.is-visible {
+    animation-duration: 440ms;
+  }
+
+  .link-grid .scroll-reveal:nth-child(n),
+  .project-layout .scroll-reveal:nth-child(n),
+  .document-grid .scroll-reveal:nth-child(n) {
+    animation-delay: 0ms;
+  }
+
   h2 {
     font-size: 1.36rem;
     line-height: 1.2;
@@ -873,4 +1168,61 @@ p {
     font-size: 1.16rem;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-title-intro,
+  .hero-title-name,
+  .hero-copy > p,
+  .hero-actions,
+  .hero-photo,
+  nav a.active-link,
+  .page-intro,
+  .scroll-reveal.reveal-ready.is-visible,
+  .project-description,
+  .movie-still-current,
+  .movie-still-previous,
+  .movie-black-transition {
+    animation: none;
+  }
+
+  .scroll-reveal.reveal-ready {
+    opacity: 1;
+    translate: none;
+  }
+
+  .movie-black-transition,
+  .movie-still-previous {
+    display: none;
+  }
+
+  .button,
+  .link-card,
+  .project-card,
+  .project-image,
+  .project-video,
+  .video-placeholder iframe,
+  .movie-still {
+    transition: none;
+  }
+
+  .button:hover,
+  .button:active,
+  .link-card:hover,
+  .link-card:active,
+  .project-card:hover,
+  .project-card:focus-visible,
+  .project-card:active,
+  .project-card:hover .project-image,
+  .project-card:hover .project-video,
+  .project-card:hover .video-placeholder iframe,
+  .project-card:focus-visible .project-image,
+  .project-card:focus-visible .project-video,
+  .project-card:focus-visible .video-placeholder iframe {
+    transform: none;
+  }
 }
