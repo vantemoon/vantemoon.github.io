@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Out of the Dark",
     label: "TGP I - Team Horror Game",
-    tags: ["Unity", "Gameplay", "AI", "Audio", "Team"],
+    tags: ["Unity", "C#", "Gameplay", "AI", "Audio"],
     intro:
       "A top-down horror team project where I worked as main programmer on core systems, AI, UI, sanity, and audio.",
     embedUrl: "https://www.youtube.com/embed/yxlQpKpnryw",
@@ -16,12 +16,12 @@ const projects = [
   },
   {
     title: "Hamsterballin'",
-    titleLines: ["Hamster", "ballin'"],
+    titleLines: ["Hamsterballin'"],
     label: "TGP II - Kart Racer",
-    tags: ["Unity", "Leadership", "Production", "Gameplay", "Team"],
+    tags: ["Unreal Engine", "Blueprint", "Leadership", "Gameplay"],
     intro:
       "A team kart-racing project where I led programming coordination, builds, task planning, and milestone support.",
-    video: "Placeholder video for Hamster ballin'",
+    embedUrl: "https://www.youtube.com/embed/DW9M2h70mUY",
     description:
       "For TGP II, the team built a kart racing game with a playful hamster-ball theme. As lead programmer, my main responsibility was keeping the technical side of the project organized and aligned with the wider team. I created tasks, prepared builds, coordinated with other discipline leads and stakeholders, supported team communication, and helped present the project during reviews and milestones.",
   },
@@ -29,6 +29,33 @@ const projects = [
 
 export default function TeamworkPage() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
+  const [videoOffsets, setVideoOffsets] = useState<Record<string, number>>({});
+
+  const toggleProject = (projectTitle: string, card: HTMLElement) => {
+    const isExpanded = expandedProject === projectTitle;
+
+    if (!isExpanded) {
+      const video = card.querySelector<HTMLElement>(".video-placeholder");
+
+      if (video) {
+        const cardStyles = window.getComputedStyle(card);
+        const contentTop =
+          parseFloat(cardStyles.borderTopWidth) +
+          parseFloat(cardStyles.paddingTop);
+        const collapsedOffset =
+          video.getBoundingClientRect().top -
+          card.getBoundingClientRect().top -
+          contentTop;
+
+        setVideoOffsets((offsets) => ({
+          ...offsets,
+          [projectTitle]: Math.max(0, collapsedOffset),
+        }));
+      }
+    }
+
+    setExpandedProject(isExpanded ? null : projectTitle);
+  };
 
   return (
     <main>
@@ -53,29 +80,30 @@ export default function TeamworkPage() {
             aria-expanded={isExpanded}
             className={`project-card ${isExpanded ? "expanded" : ""}`}
             key={project.title}
-            onClick={() =>
-              setExpandedProject(isExpanded ? null : project.title)
-            }
+            onClick={(event) => toggleProject(project.title, event.currentTarget)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                setExpandedProject(isExpanded ? null : project.title);
+                toggleProject(project.title, event.currentTarget);
               }
             }}
             role="button"
             tabIndex={0}
           >
-            <div className="video-placeholder">
-              {project.embedUrl ? (
-                <iframe
-                  src={project.embedUrl}
-                  title={`${project.title} trailer`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              ) : (
-                <span>{project.video}</span>
-              )}
+            <div
+              className="video-placeholder"
+              style={
+                isExpanded
+                  ? { marginTop: videoOffsets[project.title] ?? 0 }
+                  : undefined
+              }
+            >
+              <iframe
+                src={project.embedUrl}
+                title={`${project.title} trailer`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
             <div>
               <h2>

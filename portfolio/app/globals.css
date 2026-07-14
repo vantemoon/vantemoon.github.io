@@ -394,14 +394,19 @@ p {
   align-items: start;
 }
 
+.personal-project-copy {
+  align-self: start;
+}
+
 .project-card h2 {
   max-width: 100%;
-  font-size: clamp(1.28rem, 2.4vw, 2.15rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem);
   line-height: 1.25;
 }
 
 .title-line {
   display: block;
+  white-space: nowrap;
 }
 
 .project-card.featured {
@@ -504,6 +509,20 @@ p {
   transform-origin: center;
   animation: rotatePlaceholder 10s linear infinite;
   opacity: 0.82;
+}
+
+.animated-media.has-media {
+  min-height: auto;
+}
+
+.animated-media.has-media::before {
+  content: none;
+}
+
+.project-video {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .animated-media span {
