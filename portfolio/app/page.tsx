@@ -49,13 +49,10 @@ export default function Home() {
             <span className="hero-title-name">SYLVIA SUN</span>
           </h1>
           <p>
-            I am a game developer with a passion for creating engaging 
-            interactive experiences. My career interests center on gameplay 
-            programming, game engine development, and the technical systems 
-            that make interactive experiences responsive, expressive, 
-            and engaging. This portfolio brings together my individual 
-            projects, collaborative games, and approach to solving technical 
-            and creative challenges.
+            I am a game developer passionate about creating engaging 
+            and responsive interactive experiences. My interests include 
+            gameplay programming, game engine development, and the 
+            technical systems that bring games to life.
           </p>
           <div className="hero-actions">
             <Link className="button primary" href="/personal-project">
@@ -84,11 +81,12 @@ export default function Home() {
           <h2>Projects and progress</h2>
         </div>
         <p className="bio-text">
-          This portfolio documents how I design, build, and refine game systems
-          across different engines and team environments. It includes my custom
-          C++ engine and gameplay prototypes, team projects developed in Unity
-          and Unreal Engine, examples of programming leadership, and additional
-          background about my skills and interests.
+          This portfolio highlights how I design, build, and refine game 
+          systems across different engines and collaborative environments. 
+          It features my custom C++ engine, gameplay prototypes, team 
+          projects developed in Unity and Unreal Engine, examples of 
+          programming leadership, and additional insight into my technical 
+          skills and professional interests.
         </p>
       </section>
 
