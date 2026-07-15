@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Travel photo placeholder two</title><desc id="desc">Abstract coastline beneath a pale sky.</desc>
+  <defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#b9c6bd"/><stop offset="1" stop-color="#526b70"/></linearGradient></defs>
+  <path fill="#ece1d5" d="M0 0h1600v470H0z"/><path fill="url(#sea)" d="M0 470h1600v530H0z"/><path fill="#f9f6f1" opacity=".72" d="M0 590q210-95 420 0t420 0 420 0 340 0v54q-160 86-340 0t-420 0-420 0T0 644z"/><path fill="#5a5149" d="M0 430 410 300l205 125 160-84 238 129H0z"/>
+  <text x="90" y="115" fill="#2e2e2e" font-family="Georgia,serif" font-size="42" letter-spacing="8">TRAVEL PHOTO</text>
+</svg>

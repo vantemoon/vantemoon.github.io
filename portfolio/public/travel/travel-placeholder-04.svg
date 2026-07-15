@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Travel photo placeholder four</title><desc id="desc">Abstract rolling fields and a winding road.</desc>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b7c8c0"/><stop offset="1" stop-color="#e4d7bb"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/><path fill="#789071" d="M0 570q300-190 620 10t980-20v440H0z"/><path fill="#455b45" d="M0 760q350-210 760 0t840-30v270H0z"/><path fill="#e9d8ba" d="M720 1000q-85-160 70-300t400-210q-205 130-300 270t-65 240z"/><circle cx="1260" cy="230" r="105" fill="#f9f6f1" opacity=".68"/>
+  <text x="90" y="115" fill="#2e2e2e" font-family="Georgia,serif" font-size="42" letter-spacing="8">TRAVEL PHOTO</text>
+</svg>

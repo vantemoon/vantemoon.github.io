@@ -9,7 +9,7 @@ export default function AboutPage() {
       <section className="page-intro">
         <h1>About Me</h1>
         <p>
-          This page shares a little more about who I am, 
+          This page shares more about who I am, 
           what I have worked on, and where I hope to grow next. 
           It includes my resume and application materials 
           alongside a short overview of my background, skills, and interests.

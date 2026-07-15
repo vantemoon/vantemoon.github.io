@@ -16,7 +16,7 @@ const projects = [
     videoSrc: "/engine.mp4",
     animatedLabel: "Custom C++ Game Engine Demo Placeholder",
     description:
-      "I developed a custom 2D/3D game engine in C++ with gameplay, physics, UI, animation, and rendering systems. The engine includes D3D11 rendering for geometry, shaders, lighting, and camera controls, plus data-driven definitions, gameplay logic, console commands, and debug visualization tools. I also built multiple demos with the engine to validate its gameplay, rendering, and tooling systems.",
+      "I developed a custom 2D/3D game engine in C++ and used it to build a collection of gameplay projects and technical demos. Its D3D11 renderer supports textured and indexed geometry, vertex and index buffers, per-frame and per-model constant buffers, HLSL shaders, cameras, directional and ambient lighting, and tangent-space normal mapping. I also implemented an OBJ loader from scratch to parse mesh data and bring external 3D models into the engine without relying on a third-party model-loading library. Engine utilities generate 3D primitives such as cylinders and cones with UVs, normals, tangents, and bitangents, while runtime debug views make it possible to inspect textures, surface vectors, and lighting calculations. Beyond rendering, the engine includes input, physics, UI, animation, gameplay state machines, XML-driven content definitions, debug drawing, and a developer console with runtime commands and command-history editing. I validated these systems in projects including a fully rendered 3D chess game with legal piece movement, castling, en passant, pawn promotion, animated moves, and data-driven piece geometry, alongside other 2D and 3D gameplay prototypes.",
   },
   {
     title: "Stacklands",

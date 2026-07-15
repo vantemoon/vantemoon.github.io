@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Travel photo placeholder three</title><desc id="desc">Abstract city shapes at dusk.</desc>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#8d7784"/><stop offset="1" stop-color="#d6a08e"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/><circle cx="300" cy="230" r="90" fill="#f3dfc5" opacity=".7"/><path fill="#282a30" d="M0 730h130V410h190v320h110V285h255v445h90V520h210v210h100V350h180v380h95V470h240v530H0z"/><g fill="#d9a76d" opacity=".8"><path d="M470 350h38v55h-38zm80 0h38v55h-38zm-80 95h38v55h-38zm80 0h38v55h-38zm560-35h30v45h-30zm64 0h30v45h-30z"/></g>
+  <text x="90" y="115" fill="#f9f6f1" font-family="Georgia,serif" font-size="42" letter-spacing="8">TRAVEL PHOTO</text>
+</svg>

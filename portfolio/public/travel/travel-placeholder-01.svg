@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Travel photo placeholder one</title><desc id="desc">Abstract mountains beneath a warm sunset.</desc>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d7a5a4"/><stop offset="1" stop-color="#f4c899"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/><circle cx="1210" cy="250" r="112" fill="#f9f6f1" opacity=".78"/>
+  <path fill="#6d7665" d="M0 780 350 390l235 260 225-315 420 445 190-205 180 205v220H0z"/><path fill="#303833" d="m0 850 430-270 240 235 280-265 410 300 240-140v290H0z"/>
+  <text x="90" y="115" fill="#2e2e2e" font-family="Georgia,serif" font-size="42" letter-spacing="8">TRAVEL PHOTO</text>
+</svg>
